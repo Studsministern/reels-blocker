@@ -17,8 +17,9 @@
         'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts])',
         'ytd-grid-video-renderer:has([overlay-style=\"SHORTS\"])',
         'ytd-reel-shelf-renderer',
-        'ytd-video-renderer:has([aria-label*="#shorts"i])',
-        'ytd-video-renderer:has([overlay-style="SHORTS"])'
+        'ytd-video-renderer:has([aria-label*=\"#shorts"i])',
+        'ytd-video-renderer:has([overlay-style=\"SHORTS\"])',
+        'ytd-reel-video-renderer[id]:not([id=\"0\"])'
     ];
 
     const stringifiedArray = (() => {
