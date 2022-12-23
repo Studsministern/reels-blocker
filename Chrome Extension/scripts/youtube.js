@@ -25,12 +25,10 @@
         return string;
     })();
 
-    $('html').append(
+    $('html').prepend(
         `<style>
         ${stringifiedArray} {
-            visibility: collapse!important;
-            height: 0!important;
-            width: 0!important;
+            display: none!important;
         }
         </style>`
     );
