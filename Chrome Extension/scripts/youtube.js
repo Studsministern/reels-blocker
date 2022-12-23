@@ -1,14 +1,15 @@
 (() => {
-    /** CSS selectors to get rid of YouTube Shorts: 
-     * 0: YouTube Shorts mini side menu
-     * 1: YouTube Shorts large side menu
-     * 2: YouTube Shorts section on home screen
-     * 3: YouTube Shorts in subscriptions
-     * 4: YouTube Shorts section in search results
-     * 5: YouTube Shorts in search results (based on aria label for video title, case insensitive)
-     * 6: YouTube Shorts in search results (based on overlay-style for "shorts" logo over video thumbnail)
+    /** CSS selectors in selectorArray to get rid of YouTube Shorts: 
+     * 0: Mini side menu
+     * 1: Large side menu
+     * 2: Section on home screen
+     * 3: Shorts in subscriptions
+     * 4: Section in search results
+     * 5: Shorts in search results (based on aria label for video title, case insensitive)
+     * 6: Shorts in search results (based on overlay-style for "shorts" logo over video thumbnail)
+     * 7: Prevent infinite scrolling after entering a YouTube Short
      * 
-     * Important to use \" instead of just "
+     * Seems important to use \" instead of just " in the selectorArray below!
      */ 
 
     const selectorArray = [
