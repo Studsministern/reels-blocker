@@ -12,7 +12,7 @@
         'ytd-mini-guide-entry-renderer[aria-label=\"Shorts\"]',
         'ytd-guide-entry-renderer:has([title=\"Shorts\"])',
         'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts])',
-        'ytd-grid-video-renderer:has(span.ytd-thumbnail-overlay-time-status-renderer[aria-label=\"Shorts\"])'
+        'ytd-grid-video-renderer:has([overlay-style=\"SHORTS\"])'
     ];
 
     const stringifiedArray = (() => {
