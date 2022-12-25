@@ -18,6 +18,16 @@ const selectorArray = [
     'main div[style*="position: relative; display: flex; flex-direction: column;"]:has(div[class=\"_ac7v _abq4\"])'
 ];
 
+// Number of sections in the explore page that shows up
+const explorePageSections = 3;
+
+if(explorePageSections > 0) {
+    selectorArray.push(
+        `main div[style*="position: relative; display: flex; flex-direction: column;"]:has(div[class=" _ab8x  _ab94 _ab99 _ab9f _ab9m _ab9p _abcm"])>:nth-child(n + ${explorePageSections + 1})`,
+    );
+}
+
+// Convert the selector array to a string, for use as a CSS selector
 const stringifiedArray = (() => {
     let string = selectorArray[0];
 
