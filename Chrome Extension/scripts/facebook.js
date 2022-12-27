@@ -45,3 +45,35 @@ $('html').prepend(
     }
     </style>`
 );
+
+// Removes a node where the first three words are "Suggested for you"
+function removeSuggested(node) {
+    const firstThree = node.innerText.split(' ').slice(0, 3).join(' ');
+    if(firstThree.includes('Suggested for you')) {
+        node.parentNode.removeChild(node);
+    }
+}   
+
+window.addEventListener('load', () => {
+    // Post feed node is loaded after window is loaded
+    const feedNode = document.querySelectorAll('div:not([class]):has(>[class="x1lliihq"])')[0];
+
+    // Removes new nodes
+    let observer = new MutationObserver(mutations => {
+        for(let mutation of mutations) {
+            for(let node of mutation.addedNodes) {
+                removeSuggested(node);
+            }
+        }
+    });
+        
+    observer.observe(feedNode, {
+        childList: true,
+        subtree: false
+    });
+
+    // Remove already loaded in "Suggested for you" posts
+    feedNode.querySelectorAll('div>[class="x1lliihq"]').forEach(e => {
+        removeSuggested(e);
+    })
+});
