@@ -54,10 +54,29 @@ function removeSuggested(node) {
     }
 }   
 
-window.addEventListener('load', () => {
-    // Post feed node is loaded after window is loaded
-    const feedNode = document.querySelectorAll('div:not([class]):has(>[class="x1lliihq"])')[0];
+// Function copied from https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
+function waitForElm(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
 
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                resolve(document.querySelector(selector));
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
+
+// Post feed node is loaded
+waitForElm('div:not([class]):has(>[class="x1lliihq"])').then((feedNode) => {
     // Removes new nodes
     let observer = new MutationObserver(mutations => {
         for(let mutation of mutations) {
@@ -75,5 +94,5 @@ window.addEventListener('load', () => {
     // Remove already loaded in "Suggested for you" posts
     feedNode.querySelectorAll('div>[class="x1lliihq"]').forEach(e => {
         removeSuggested(e);
-    })
+    });
 });
