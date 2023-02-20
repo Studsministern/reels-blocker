@@ -11,6 +11,7 @@
  * Seems important to use \" instead of just " in the selectorArray below!
  */ 
 
+// Applied in CSSselectors.js
 const selectorArray = [
     'ytd-mini-guide-entry-renderer[aria-label=\"Shorts\"]',
     'ytd-guide-entry-renderer:has([title=\"Shorts\"])',
@@ -30,21 +31,3 @@ if (homePageSections > 0) {
         `div#contents:has(ytd-rich-grid-row)>:nth-child(n + ${homePageSections + 1})`
     );
 }
-
-const stringifiedArray = (() => {
-    let string = selectorArray[0];
-
-    for(let i = 1; i < selectorArray.length; i++) {
-        string += `,\n${selectorArray[i]}`;
-    }
-
-    return string;
-})();
-
-$('html').prepend(
-    `<style>
-    ${stringifiedArray} {
-        display: none!important;
-    }
-    </style>`
-);

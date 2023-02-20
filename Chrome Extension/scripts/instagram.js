@@ -11,6 +11,7 @@
  * Seems important to use \" instead of just " in the selectorArray below!
  */ 
 
+// Applied in CSSselectors.js
 const selectorArray = [
     'main div[style*=\"position: relative; display: flex; flex-direction: column;\"]>div[class]>:last-child',
     'main div[style*=\"position: relative; display: flex; flex-direction: column;\"]>div[class]~article',
@@ -21,23 +22,3 @@ const selectorArray = [
     'div:not([class]):has(>div>a[href=\"/explore/\"])',
     'main div[style*="position: relative; display: flex; flex-direction: column;"]:has(div[class=\" _ab8x  _ab94 _ab99 _ab9f _ab9m _ab9p _abcm\"])'
 ];
-
-// Convert the selector array to a string, for use as a CSS selector
-const stringifiedArray = (() => {
-    let string = selectorArray[0];
-
-    for(let i = 1; i < selectorArray.length; i++) {
-        string += `,\n${selectorArray[i]}`;
-    }
-
-    return string;
-})();
-
-// Add the CSS styling
-$('html').prepend(
-    `<style>
-    ${stringifiedArray} {
-        display: none!important;
-    }
-    </style>`
-);

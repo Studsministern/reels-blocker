@@ -15,7 +15,8 @@
  * div[class*="x6s0dn4 x78zum5 x1q0g3np x5yr21d xl56j7k xh8yej3"] to remove everything when viewing a reel
 */
 
- const selectorArray = [
+// Applied in CSSselectors.js
+const selectorArray = [
     'div:has(>[class=\"x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x2lah0s x193iq5w xeuugli x10b6aqq x1yrsyyn x1iyjqo2\"])>:nth-child(2)',
     'div[aria-label=\"Reels tray\"]',
     '[role="button"]:has(div[aria-label*=\"Card\"])',
@@ -25,26 +26,6 @@
     'ul:not([class]) li:has(a[href*=\"watch\" i])',
     'div[class=\"x78zum5\"]:has(>div[class=\"x78zum5 x4pn7vq xkrivgy x1gryazu\"])'
 ];
-
-// Convert the selector array to a string, for use as a CSS selector
-const stringifiedArray = (() => {
-    let string = selectorArray[0];
-
-    for(let i = 1; i < selectorArray.length; i++) {
-        string += `,\n${selectorArray[i]}`;
-    }
-
-    return string;
-})();
-
-// Add the CSS styling
-$('html').prepend(
-    `<style>
-    ${stringifiedArray} {
-        display: none!important;
-    }
-    </style>`
-);
 
 // Removes a node where the first three words are "Suggested for you"
 function removeSuggested(node) {
