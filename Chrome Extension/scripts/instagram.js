@@ -12,8 +12,8 @@
  */ 
 
 const selectorArray = [
-    'main div[style*=\"position: relative; display: flex; flex-direction: column;\"]>div:not([class])>:last-child',
-    'main div[style*=\"position: relative; display: flex; flex-direction: column;\"]>div:not([class])~article',
+    'main div[style*=\"position: relative; display: flex; flex-direction: column;\"]>div[class]>:last-child',
+    'main div[style*=\"position: relative; display: flex; flex-direction: column;\"]>div[class]~article',
     'main div._aalg',
     'main>div>div~*[class*=\"_aa6g\"]',
     'main a[role=\"tab\"][href$=\"reels/\"]',
