@@ -16,7 +16,7 @@ const selectorArray = [
     'main div[style*=\"position: relative; display: flex; flex-direction: column;\"]>div[class]~article',
     'main div._aalg',
     'main>div>div~*[class*=\"_aa6g\"]',
-    'main a[role=\"tab\"][href$=\"reels/\"]',
+    'a[role=\"link\"][href=\"/reels/videos/\"]',
     'main div[style*="position: relative; display: flex; flex-direction: column;"]:has(div[class=\"_ac7v _abq4\"])',
     'div:not([class]):has(>div>a[href=\"/explore/\"])',
     'main div[style*="position: relative; display: flex; flex-direction: column;"]:has(div[class=\" _ab8x  _ab94 _ab99 _ab9f _ab9m _ab9p _abcm\"])'
