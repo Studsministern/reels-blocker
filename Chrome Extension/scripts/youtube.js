@@ -21,11 +21,11 @@ const selectorArray = [
     'ytd-reel-video-renderer[id]:not([id="0"])'
 ];
 
-// Number of sections in the home video page that shows up. Even setting homePageSections to 1 will results in 
+// Number of sections in the home video page that shows up. Allowed to be positive numbers. Handles channels as a special case with :not([page-subtype="channels"])
 const homePageSections = 3;
 
 if (homePageSections > 0) {
     selectorArray.push(
-        `div#contents:has(ytd-rich-grid-row)>:nth-child(n + ${homePageSections + 1})`
+        `ytd-two-column-browse-results-renderer:not([page-subtype="channels"]) #contents:has(ytd-rich-grid-row)>:nth-child(n + ${homePageSections + 1})`
     );
 }
