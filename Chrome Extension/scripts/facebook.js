@@ -27,12 +27,21 @@ const selectorArray = [
     'div[class=\"x78zum5\"]:has(>div[class=\"x78zum5 x4pn7vq xkrivgy x1gryazu\"])'
 ];
 
-// Removes a node where the first three words are "Suggested for you"
-function removeSuggested(node) {
-    const firstThree = node.innerText.split(' ').slice(0, 3).join(' ');
-    if(firstThree.includes('Suggested for you')) {
-        node.parentNode.removeChild(node);
-    }
+// Applied in removeNode, used to remove all feed posts where the following strings show up
+const unwantedNodeStrings = [
+    'Suggested for you',
+    'Reels and short videos'
+]
+
+// Removes a node where strings from unwantedNodeStrings are included
+function removeNodeIfUnwanted(node) {
+    const innerText = node.innerText;
+    unwantedNodeStrings.forEach(string => {
+        if(innerText.includes(string)) {
+            node.parentNode.removeChild(node);
+            return;
+        }
+    });
 }   
 
 // Function copied from https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
@@ -62,7 +71,7 @@ waitForElm('div:not([class]):has(>[class="x1lliihq"])').then((feedNode) => {
     let observer = new MutationObserver(mutations => {
         for(let mutation of mutations) {
             for(let node of mutation.addedNodes) {
-                removeSuggested(node);
+                removeNodeIfUnwanted(node);
             }
         }
     });
@@ -74,6 +83,6 @@ waitForElm('div:not([class]):has(>[class="x1lliihq"])').then((feedNode) => {
 
     // Remove already loaded in "Suggested for you" posts
     feedNode.querySelectorAll('div>[class="x1lliihq"]').forEach(e => {
-        removeSuggested(e);
+        removeNodeIfUnwanted(e);
     });
 });
