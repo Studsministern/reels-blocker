@@ -7,8 +7,6 @@
  * 5: Side menu 'Gaming Video' tab
  * 6: Side menu 'Live Videos' and 'Watch' tabs
  * 7: Video recommendations below a video
- * 
- * Seems important to use \" instead of just " in the selectorArray below!
  */ 
 
 /** Possible selector:
@@ -17,14 +15,14 @@
 
 // Applied in CSSselectors.js
 const selectorArray = [
-    'div:has(>[class=\"x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x2lah0s x193iq5w xeuugli x10b6aqq x1yrsyyn x1iyjqo2\"])>:nth-child(2)',
-    'div[aria-label=\"Reels tray\"]',
-    '[role="button"]:has(div[aria-label*=\"Card\"])',
-    'ul[class=\"xuk3077 x78zum5 x1iyjqo2 xl56j7k x1p8ty84 x1na7pl x88anuq\"]>:nth-child(2)',
-    'div:has(>[aria-label*=\"Facebook Watch\"])',
-    'ul:not([class]) li:has(a[href*=\"video\" i])',
-    'ul:not([class]) li:has(a[href*=\"watch\" i])',
-    'div[class=\"x78zum5\"]:has(>div[class=\"x78zum5 x4pn7vq xkrivgy x1gryazu\"])'
+    'div:has(>[class="x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x2lah0s x193iq5w xeuugli x10b6aqq x1yrsyyn x1iyjqo2"])>:nth-child(2)',
+    'div[aria-label="Reels tray"]',
+    '[role="button"]:has(div[aria-label*="Card"])',
+    'ul[class="xuk3077 x78zum5 x1iyjqo2 xl56j7k x1p8ty84 x1na7pl x88anuq"]>:nth-child(2)',
+    'div:has(>[aria-label*="Facebook Watch"])',
+    'ul:not([class]) li:has(a[href*="video" i])',
+    'ul:not([class]) li:has(a[href*="watch" i])',
+    'div[class="x78zum5"]:has(>div[class="x78zum5 x4pn7vq xkrivgy x1gryazu"])'
 ];
 
 // Applied in removeNode, used to remove all feed posts where the following strings show up

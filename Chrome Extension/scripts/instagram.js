@@ -7,18 +7,16 @@
  * 5: Hiding page reels (instagram.com/pagename/reels/*)
  * 6: Hiding explore page menu tab
  * 7: Hiding explore page posts/reels
- * 
- * Seems important to use \" instead of just " in the selectorArray below!
  */ 
 
 // Applied in CSSselectors.js
 const selectorArray = [
-    'main div[style*=\"position: relative; display: flex; flex-direction: column;\"]>div[class]>:last-child',
-    'main div[style*=\"position: relative; display: flex; flex-direction: column;\"]>div[class]~article',
+    'main div[style*="position: relative; display: flex; flex-direction: column;"]>div[class]>:last-child',
+    'main div[style*="position: relative; display: flex; flex-direction: column;"]>div[class]~article',
     'main div._aalg',
-    'main>div>div~*[class*=\"_aa6g\"]',
-    'a[role=\"link\"][href=\"/reels/\"]',
-    'main div[style*="position: relative; display: flex; flex-direction: column;"]:has(div[class=\"_ac7v _abq4\"])',
-    'div:not([class]):has(>div>a[href=\"/explore/\"])',
-    'main div[style*="position: relative; display: flex; flex-direction: column;"]:has(div[class=\" _ab8x  _ab94 _ab99 _ab9f _ab9m _ab9p _abcm\"])'
+    'main>div>div~*[class*="_aa6g"]',
+    'a[role="link"][href="/reels/"]',
+    'main div[style*="position: relative; display: flex; flex-direction: column;"]:has(div[class="_ac7v _abq4"])',
+    'div:not([class]):has(>div>a[href="/explore/"])',
+    'main div[style*="position: relative; display: flex; flex-direction: column;"]:has(div[class=" _ab8x  _ab94 _ab99 _ab9f _ab9m _ab9p _abcm"])'
 ];

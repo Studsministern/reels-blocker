@@ -7,20 +7,18 @@
  * 5: Shorts in search results (based on aria label for video title, case insensitive)
  * 6: Shorts in search results (based on overlay-style for "shorts" logo over video thumbnail)
  * 7: Prevent infinite scrolling after entering a YouTube Short
- * 
- * Seems important to use \" instead of just " in the selectorArray below!
  */ 
 
 // Applied in CSSselectors.js
 const selectorArray = [
-    'ytd-mini-guide-entry-renderer[aria-label=\"Shorts\"]',
-    'ytd-guide-entry-renderer:has([title=\"Shorts\"])',
+    'ytd-mini-guide-entry-renderer[aria-label="Shorts"]',
+    'ytd-guide-entry-renderer:has([title="Shorts"])',
     'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts])',
-    'ytd-grid-video-renderer:has([overlay-style=\"SHORTS\"])',
+    'ytd-grid-video-renderer:has([overlay-style="SHORTS"])',
     'ytd-reel-shelf-renderer',
-    'ytd-video-renderer:has([aria-label*=\"#shorts"i])',
-    'ytd-video-renderer:has([overlay-style=\"SHORTS\"])',
-    'ytd-reel-video-renderer[id]:not([id=\"0\"])'
+    'ytd-video-renderer:has([aria-label*="#shorts"i])',
+    'ytd-video-renderer:has([overlay-style="SHORTS"])',
+    'ytd-reel-video-renderer[id]:not([id="0"])'
 ];
 
 // Number of sections in the home video page that shows up. Even setting homePageSections to 1 will results in 
