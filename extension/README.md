@@ -33,6 +33,7 @@ For Facebook, a `MutationObserver` is also added to remove "Suggested for you" a
 - All Facebook Reels.
 - All Facebook Videos.
 - All "Suggested for you" and "Reels and short videos" posts in the home feed.
+- All sponsored posts.
 
 ### Instagram:
 

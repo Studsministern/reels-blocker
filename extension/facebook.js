@@ -7,6 +7,8 @@
  * 5: Side menu 'Gaming Video' tab
  * 6: Side menu 'Live Videos' and 'Watch' tabs
  * 7: Video recommendations below a video
+ * 8: Sponsored posts (because who wants to see that?)
+ * 9: Sponsored posts (handling what I believe to be a special case)
  */ 
 
 /** Possible selector:
@@ -22,7 +24,9 @@ const selectorArray = [
     'div:has(>[aria-label*="Facebook Watch"])',
     'ul:not([class]) li:has(a[href*="video" i])',
     'ul:not([class]) li:has(a[href*="watch" i])',
-    'div[class="x78zum5"]:has(>div[class="x78zum5 x4pn7vq xkrivgy x1gryazu"])'
+    'div[class="x78zum5"]:has(>div[class="x78zum5 x4pn7vq xkrivgy x1gryazu"])',
+    'div>[class="x1lliihq"]:has(a[target="_blank"])',
+    'div>[class="x1lliihq"]:has(a[href*="/ads/"])'
 ];
 
 // Applied in removeNode, used to remove all feed posts where the following strings show up
@@ -40,7 +44,7 @@ function removeNodeIfUnwanted(node) {
             return;
         }
     });
-}   
+}
 
 // Function copied from https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
 function waitForElm(selector) {
