@@ -1,37 +1,15 @@
 # reels-blocker
 
-This project is created as a productivity web extension, with the goal of removing all traces of infinite scrolling and reels from several websites without removing the actual content from friends and liked pages. This is done by prepending CSS selectors to the HTML element of these websites. A MutationObserver is also added to Facebook to remove "Suggested for you" posts.
+This project is created to remove reels/short videos from Facebook, Instagram, TikTok and YouTube. This is done in order to save time, improve mental health and boost productivity.
 
-The content removed from the following websites is:
+## Web extension
 
-### Instagram:
-- All menu tabs for Instagram "Reels".
-- All menu tabs for the "Explore" page.
-- All posts on the "Explore" page.
-- The "Suggested for you" section on the homepage (which has infinite scrolling).
-- "More posts from ____" when viewing a post or a reel.
+This is a chrome web extension, with all files found in `extension`.
 
-### Facebook:
-- All Facebook Reels.
-- All Facebook Videos.
-- All "Suggested for you" posts.
+## App
 
-### YouTube:
-- Infinite scrolling on the homepage. Hardcoded to 3 rows of videos but can be adjusted by changing `const homePageSections = 3;` to another value in *"/Chrome Extension/scripts/youtube.js"*.
-- YouTube Shorts on homepage, in subscriptions and when searching.
-- YouTube Shorts infinite scrolling when linked to a Short from another source.
+**Currently work in progress.**
 
-### TikTok:
-- Infinite scrolling on recommended page.
+The goal is to create an Android app that can either hide reels/short videos or send a reminder to the user when watching these. The app is supposed to work for Facebook Reels, Instagram Reels and YouTube Shorts in their respective apps.
 
-**Note: As the entire concept of TikTok is based on reels and infinite scrolling, I would recommend an extension for blocking this specific website if that is of interest.**
-
-&nbsp;
-
-## Installing:
-I primarily made this extension for my own productivity but if testing the code is of interest I have included this installation guide. The installing is based on the top rated answer to [this Stack Overflow question](https://superuser.com/questions/247651/how-does-one-install-an-extension-for-chrome-browser-from-the-local-file-system):
-1. Clone this project
-2. Go to chrome://extensions/
-3. Activate "Developer mode" in the top right corner
-4. Click "Load Unpacked Extension"
-5. Navigate to the local folder containing the extension’s code (the folder *"/Chrome Extension"* in this case) and click Ok
+As the entire concept of TikTok is these short videos, I am unsure if I am going to try to block short videos here. I would instead recommend blocking the TikTok app entirely using some third party app. Or simply removing the TikTok app.
