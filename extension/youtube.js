@@ -2,11 +2,12 @@
  * 0: Mini side menu
  * 1: Large side menu
  * 2: Section on home screen
- * 3: Shorts in subscriptions
- * 4: Section in search results
- * 5: Shorts in search results (based on aria label for video title, case insensitive)
- * 6: Shorts in search results (based on overlay-style for "shorts" logo over video thumbnail)
- * 7: Prevent infinite scrolling after entering a YouTube Short
+ * 3: Shorts in subscriptions (situation 1: small videos in grid)
+ * 4: Shorts in subscriptions (situation 2: large videos in grid)
+ * 5: Section in search results
+ * 6: Shorts in search results (based on aria label for video title, case insensitive)
+ * 7: Shorts in search results (based on overlay-style for "shorts" logo over video thumbnail)
+ * 8: Prevent infinite scrolling after entering a YouTube Short
  */ 
 
 // Applied in CSSselectors.js
@@ -15,6 +16,7 @@ const selectorArray = [
     'ytd-guide-entry-renderer:has([title="Shorts"])',
     'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts])',
     'ytd-grid-video-renderer:has([overlay-style="SHORTS"])',
+    'ytd-rich-item-renderer:has([overlay-style="SHORTS"])',
     'ytd-reel-shelf-renderer',
     'ytd-video-renderer:has([aria-label*="#shorts"i])',
     'ytd-video-renderer:has([overlay-style="SHORTS"])',
