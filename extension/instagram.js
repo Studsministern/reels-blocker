@@ -12,8 +12,8 @@
 
 // Applied in CSSselectors.js
 const selectorArray = [
-    'main div[style*="position: relative; display: flex; flex-direction: column;"]>div[class]>:last-child',
-    'main div[style*="position: relative; display: flex; flex-direction: column;"]>div[class]~article',
+    'main div:not([class])>div:has(article[role="presentation"])>div[class]>:last-child',
+    'main div:not([class])>div:has(article[role="presentation"])>div[class]~article',
     'main div._aalg',
     'main>div>div~*[class*="_aa6g"]',
     'a[role="link"][href="/reels/"]',
