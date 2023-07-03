@@ -1,15 +1,21 @@
 /** CSS selectors in selectorArray to get rid of infinite scrolling and reels: 
- * 0: Hiding home screen "For you" feed button. (Finally, a great change from Instagram! Now you can view only the posts of people you follow!)
- * 1: Hiding posts/reels "More posts from ____" (on instagram.com/p/* and instagram.com/reel/*)
- * 2: Hiding reels menu tab
- * 3: Hiding reels menu tab on instagram page (instagram.com/<pagename>/reels/)
- * 4: Hiding reels on instagram page (instagram.com/<pagename>/reels/*)
- * 5: Hiding explore page menu tab
- * 6: Hiding explore page posts/reels
+ * 0: Hiding home screen "Suggested posts" text
+ * 1: Hiding home screen suggested posts
+ * 2: Hiding home screen loading logo (not removing it results in infinite loading under suggested posts!)
+ * 3: Hiding home screen "For you" feed button. (Finally, a great change from Instagram! Now you can view only the posts of people you follow by going to instagram.com/?variant=following!)
+ * 4: Hiding posts/reels "More posts from ____" (on instagram.com/p/* and instagram.com/reel/*)
+ * 5: Hiding reels menu tab
+ * 6: Hiding reels menu tab on instagram page (instagram.com/<pagename>/reels/)
+ * 7: Hiding reels on instagram page (instagram.com/<pagename>/reels/*)
+ * 8: Hiding explore page menu tab
+ * 9: Hiding explore page posts/reels
  */ 
 
 // Applied in CSSselectors.js
 const selectorArray = [
+    'main div:not([class])>div:has(article[role="presentation"])>div[class]>:last-child',
+    'main div:not([class])>div:has(article[role="presentation"])>div[class]~article',
+    'main div._aalg',
     '[aria-label="For you"]',
     'main>div>div~*[class*="_aa6g"]',
     'a[role="link"][href="/reels/"]',
