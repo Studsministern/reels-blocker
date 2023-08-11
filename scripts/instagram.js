@@ -13,8 +13,8 @@
 
 // Applied in CSSselectors.js
 const selectorArray = [
-    'main div:not([class])>div:has(article[role="presentation"])>div[class]>:last-child',
-    'main div:not([class])>div:has(article[role="presentation"])>div[class]~article',
+    'main div:not([class])>div:has(article)>article~div[class]>:last-child',
+    'main div:not([class])>div:has(article)>div[class]~article',
     'main div._aalg',
     'div[style="--igdstabgroup-column-count: 2;"]>:first-child',
     'main>div>div~*[class*="_aa6g"]',
