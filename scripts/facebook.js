@@ -1,14 +1,15 @@
 /** CSS selectors in selectorArray to get rid of infinite videos and reels: 
- * 0: Home screen reels tab
- * 1: Home screen reels tray
- * 2: Reel buttons moving to previous and next reels
- * 3: Facebook Watch tab
- * 4: Facebook Watch videos
- * 5: Side menu 'Gaming Video' tab
- * 6: Side menu 'Live Videos' and 'Watch' tabs
- * 7: Video recommendations below a video
- * 8: Sponsored posts (because who wants to see that?)
- * 9: Sponsored posts (handling what I believe to be a special case)
+ * 0:  Home screen reels tab
+ * 1:  Home screen reels tray
+ * 2:  Reel buttons moving to previous and next reels
+ * 3:  Facebook Watch tab
+ * 4:  Facebook Watch videos
+ * 5:  Side menu 'Gaming Video' tab
+ * 6:  Side menu 'Live Videos' and 'Watch' tabs
+ * 7:  Video recommendations below a video
+ * 8:  Sponsored posts (because who wants to see that?)
+ * 9:  Sponsored posts (handling what I believe to be a special case)
+ * 10: Sponsored posts on the right
  */ 
 
 /** Possible selector:
@@ -26,7 +27,8 @@ const selectorArray = [
     'ul:not([class]) li:has(a[href*="watch" i])',
     'div[class="x78zum5"]:has(>div[class="x78zum5 x4pn7vq xkrivgy x1gryazu"])',
     'div>[class="x1lliihq"]:has(a[target="_blank"])',
-    'div>[class="x1lliihq"]:has(a[href*="/ads/"])'
+    'div>[class="x1lliihq"]:has(a[href*="/ads/"])',
+    'div.x1y1aw1k>div:not([class])>span:has(div:not([class]))'
 ];
 
 // Applied in removeNode, used to remove all feed posts where the following strings show up
@@ -40,6 +42,7 @@ function removeNodeIfUnwanted(node) {
     const innerText = node.innerText;
     unwantedNodeStrings.forEach(string => {
         if(innerText.includes(string)) {
+            console.log(`Removed post of type: ${string}`);
             node.parentNode.removeChild(node);
             return;
         }
@@ -83,7 +86,7 @@ waitForElm('div:not([class]):has(>[class="x1lliihq"])').then((feedNode) => {
         subtree: false
     });
 
-    // Remove already loaded in "Suggested for you" posts
+    // Remove unwanted posts that are already loaded in
     feedNode.querySelectorAll('div>[class="x1lliihq"]').forEach(e => {
         removeNodeIfUnwanted(e);
     });
