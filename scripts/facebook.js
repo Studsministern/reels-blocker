@@ -25,9 +25,9 @@ const selectorArray = [
     'div:has(>[aria-label*="Facebook Watch"])',
     'ul:not([class]) li:has(a[href*="video" i])',
     'ul:not([class]) li:has(a[href*="watch" i])',
-    'div[class="x78zum5"]:has(>div[class="x78zum5 x4pn7vq xkrivgy x1gryazu"])',
-    'div>[class="x1lliihq"]:has(a[target="_blank"])',
-    'div>[class="x1lliihq"]:has(a[href*="/ads/"])',
+    'div.x78zum5:has(>div[class="x78zum5 x4pn7vq xkrivgy x1gryazu"])',
+    'div.x1lliihq:has([rel="nofollow noreferrer"])',
+    'div.x1lliihq:has(a[href*="/ads/"])',
     'div.x1y1aw1k>div:not([class])>span:has(div:not([class]))'
 ];
 
@@ -37,12 +37,34 @@ const unwantedNodeStrings = [
     'Reels and short videos'
 ]
 
+let postsRemoved = 0;
+
+// IIFE to get the first value for postsRemoved
+(() => {
+    const key = 'postsRemoved';
+
+    chrome.storage.local.get(key, (items) => {
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError.message);
+        } else {
+            postsRemoved = +items[key];
+            console.log(`Start value: ${postsRemoved}`);
+        }
+    });
+})();
+
+function incrementPostsRemoved() {
+    postsRemoved++;
+    chrome.storage.local.set({ postsRemoved: postsRemoved });
+    console.log(`Posts removed: ${postsRemoved}`);
+}
+
 // Removes a node where strings from unwantedNodeStrings are included
 function removeNodeIfUnwanted(node) {
     const innerText = node.innerText;
     unwantedNodeStrings.forEach(string => {
         if(innerText.includes(string)) {
-            console.log(`Removed post of type: ${string}`);
+            incrementPostsRemoved();
             node.parentNode.removeChild(node);
             return;
         }
