@@ -9,16 +9,16 @@
     "content_scripts": [
         {
             "matches": ["*://*.facebook.com/*"],
-            "js": ["scripts/jquery.js", "scripts/facebook.js", "scripts/CSSselectors.js"]
+            "js": ["scripts/jquery.js", "scripts/selectors.js", "scripts/facebook.js"]
         }, {
             "matches": ["*://*.instagram.com/*"],
-            "js": ["scripts/jquery.js", "scripts/instagram.js", "scripts/CSSselectors.js"]
+            "js": ["scripts/jquery.js", "scripts/selectors.js", "scripts/instagram.js"]
         }, {
             "matches": ["*://*.tiktok.com/*"],
-            "js": ["scripts/jquery.js", "scripts/tiktok.js", "scripts/CSSselectors.js"]
+            "js": ["scripts/jquery.js", "scripts/selectors.js", "scripts/tiktok.js"]
         }, {
             "matches": ["*://*.youtube.com/*"],
-            "js": ["scripts/jquery.js", "scripts/youtube.js", "scripts/CSSselectors.js"]
+            "js": ["scripts/jquery.js", "scripts/selectors.js", "scripts/youtube.js"]
         }
     ],
     "permissions": [
