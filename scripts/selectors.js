@@ -43,9 +43,9 @@ window.facebookSelectors = [
     new Selector('"Gaming Video" tab' , true, 'ul:not([class]) li:has(a[href*="video" i])'),
     new Selector('"Live videos" and "Watch" tab' , true, 'ul:not([class]) li:has(a[href*="watch" i])'),
     new Selector('Video recommendations below videos' , true, 'div.x78zum5:has(>div[class="x78zum5 x4pn7vq xkrivgy x1gryazu"])'),
-    new Selector('Sponsored posts' , true, 'div.x1lliihq:has([rel="nofollow noreferrer"])'),
-    new Selector('Sponsored posts special case' , true, 'div.x1lliihq:has(a[href*="/ads/"])'),
-    new Selector('Sponsored posts tab' , true, 'div.x1y1aw1k>div:not([class])>span:has(div:not([class]))')
+    new Selector('Sponsored posts' , true, 'div[class="x1lliihq"]:has([rel="nofollow noreferrer"])'),
+    new Selector('Sponsored posts special case' , true, 'div[class="x1lliihq"]:has(a[href*="/ads/"])'),
+    new Selector('Sponsored posts tab' , true, 'div[class="x1y1aw1k"] span:has(a[aria-label="Advertiser"])')
 ];
 /** Possible selector:
  * div[class*="x6s0dn4 x78zum5 x1q0g3np x5yr21d xl56j7k xh8yej3"] to remove everything when viewing a reel
