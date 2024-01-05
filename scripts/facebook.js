@@ -5,7 +5,8 @@ addCSS(selectorArray);
 // Applied in removeNode, used to remove all feed posts where the following strings show up
 const unwantedNodeStrings = [
     'Suggested for you',
-    'Reels and short videos'
+    'Reels and short videos',
+    'Follow'
 ]
 
 const key = 'postsRemoved';
