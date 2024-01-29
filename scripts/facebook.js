@@ -9,38 +9,11 @@ const unwantedNodeStrings = [
     'Follow'
 ]
 
-const key = 'postsRemoved';
-
-// Otherwise get the current value
-let postsRemoved = localStorage.getItem(key);
-
-// TODO: Some of the functionality here should probably be abstracted out into a separate file
-function incrementPostsRemoved() {
-    if (postsRemoved == null) {
-        // First time, should set the value to 0
-        if (!localStorage.hasOwnProperty(key)) {
-            localStorage.setItem(key, 0);
-        }
-        // If there should be a value, tries to get the value again.
-        else {
-            postsRemoved = localStorage.getItem(key);
-        }
-    }
-    
-    if (postsRemoved != null) {
-        postsRemoved++;
-        localStorage.setItem(key, postsRemoved);
-    }
-    
-    console.log(`${key}: ${postsRemoved}`);
-}
-
 // Removes a node where strings from unwantedNodeStrings are included
 function removeNodeIfUnwanted(node) {
     const innerText = node.innerText;
     unwantedNodeStrings.forEach(string => {
         if(innerText.includes(string)) {
-            incrementPostsRemoved();
             node.parentNode.removeChild(node);
             return;
         }
