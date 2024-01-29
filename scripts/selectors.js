@@ -38,13 +38,13 @@ window.facebookSelectors = [
     new Selector('Reels tab', true, 'div:has(>[class="x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x2lah0s x193iq5w xeuugli x10b6aqq x1yrsyyn x1iyjqo2"])>:nth-child(2)'),
     new Selector('Reels tray', true, 'div[aria-label="Reels tray"]'),
     new Selector('Reels buttons', true, '[role="button"]:has(div[aria-label*="Card"])'),
-    new Selector('Watch tab' , true, 'ul[class="xuk3077 x78zum5 x1iyjqo2 xl56j7k x1p8ty84 x1na7pl x88anuq"]>:nth-child(2)'),
-    new Selector('Watch videos' , true, 'div:has(>[aria-label*="Facebook Watch"])'),
-    new Selector('"Gaming Video" tab' , true, 'ul:not([class]) li:has(a[href*="video" i])'),
-    new Selector('"Live videos" and "Watch" tab' , true, 'ul:not([class]) li:has(a[href*="watch" i])'),
-    new Selector('Video recommendations below videos' , true, 'div.x78zum5:has(>div[class="x78zum5 x4pn7vq xkrivgy x1gryazu"])'),
-    new Selector('Sponsored posts' , true, 'div[class="x1lliihq"]:has([rel="nofollow noreferrer"])'),
-    new Selector('Sponsored posts special case' , true, 'div[class="x1lliihq"]:has(a[href*="/ads/"])'),
+    new Selector('Watch tab', true, 'ul[class="xuk3077 x78zum5 x1iyjqo2 xl56j7k x1p8ty84 x1na7pl x88anuq"]>:nth-child(2)'),
+    new Selector('Watch videos', true, 'div:has(>[aria-label*="Facebook Watch"])'),
+    new Selector('"Gaming Video" tab', true, 'ul:not([class]) li:has(a[href*="video" i])'),
+    new Selector('"Live videos" and "Watch" tab', true, 'ul:not([class]) li:has(a[href*="watch" i])'),
+    new Selector('Video recommendations below videos', true, 'div.x78zum5:has(>div[class="x78zum5 x4pn7vq xkrivgy x1gryazu"])'),
+    new Selector('Sponsored posts', true, 'div[class="x1lliihq"]:has(svg[style="height: 16px; overflow: visible; width: 56.8958px;"])'),
+    new Selector('Sponsored posts hover special case', true, 'div[class="x1lliihq"]:has(a[href*="/ads/"])'),
     new Selector('Sponsored posts tab' , true, 'div[class="x1y1aw1k"] span:has(a[aria-label="Advertiser"])')
 ];
 /** Possible selector:

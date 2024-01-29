@@ -5,13 +5,21 @@ addCSS(selectorArray);
 // Applied in removeNode, used to remove all feed posts where the following strings show up
 const unwantedNodeStrings = [
     'Suggested for you',
-    'Reels and short videos',
-    'Follow'
+    '· Follow'
 ]
 
 // Removes a node where strings from unwantedNodeStrings are included
 function removeNodeIfUnwanted(node) {
-    const innerText = node.innerText;
+    // Special case for Reels and short videos
+    if(node.innerText.includes('Reels and short videos')) {
+        node.parentNode.removeChild(node);
+        return;
+    }
+
+    // Handling all other strings
+    const headerElement = node.querySelector('.x1cy8zhl');
+    const innerText = headerElement?.innerText ?? '';
+
     unwantedNodeStrings.forEach(string => {
         if(innerText.includes(string)) {
             node.parentNode.removeChild(node);
