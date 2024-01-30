@@ -4,27 +4,27 @@
     "description": "Prevent the infinite scrolling of instagram reels, YouTube shorts, Facebook videos/reels and TikTok.",
     "version": "1.0",
     "icons": {
-        "128": "128.png"
+        "128": "icons/128.png"
     },
     "content_scripts": [
         {
             "matches": ["*://*.facebook.com/*"],
-            "js": ["scripts/jquery.js", "scripts/selectors.js", "scripts/facebook.js"]
+            "js": ["content_scripts/lib/jquery.js", "content_scripts/websites/selectors.js", "content_scripts/websites/facebook.js"]
         }, {
             "matches": ["*://*.instagram.com/*"],
-            "js": ["scripts/jquery.js", "scripts/selectors.js", "scripts/instagram.js"]
+            "js": ["content_scripts/lib/jquery.js", "content_scripts/websites/selectors.js", "content_scripts/websites/instagram.js"]
         }, {
             "matches": ["*://*.tiktok.com/*"],
-            "js": ["scripts/jquery.js", "scripts/selectors.js", "scripts/tiktok.js"]
+            "js": ["content_scripts/lib/jquery.js", "content_scripts/websites/selectors.js", "content_scripts/websites/tiktok.js"]
         }, {
             "matches": ["*://*.youtube.com/*"],
-            "js": ["scripts/jquery.js", "scripts/selectors.js", "scripts/youtube.js"]
+            "js": ["content_scripts/lib/jquery.js", "content_scripts/websites/selectors.js", "content_scripts/websites/youtube.js"]
         }
     ],
     "permissions": [
         "storage"
     ],
     "action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup/popup.html"
     }
 }

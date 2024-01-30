@@ -2,6 +2,7 @@ const selectorArray = window.youtubeSelectors;
 
 // Number of sections in the home video page that shows up. Allowed to be positive numbers.
 // Only affects the home page because of [page-subtype="home"]. Alternatives are [page-subtype="channel"] and [page-subtype="subscriptions"]
+// TODO: Should be set as an option
 const homePageSections = 3;
 
 if (homePageSections >= 0) {
