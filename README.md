@@ -61,9 +61,10 @@ For Facebook, a `MutationObserver` is also added to remove "Suggested for you" a
 I primarily made this extension for my own productivity but if it is of interest to anyone else I have included this installation guide. The installing is based on the top rated answer to [this Stack Overflow question](https://superuser.com/questions/247651/how-does-one-install-an-extension-for-chrome-browser-from-the-local-file-system):
 
 1. Clone this project
-2. Go to `chrome://extensions/` in your browser
-3. Activate "Developer mode" in the top right corner
-4. Click <kbd>Load Unpacked Extension</kbd>
-5. Navigate to this folder (`<path>/reels-blocker/`), which contains the `manifest.json` file, and click Ok
+1. Run `npm install` and `npm run build` in the root folder
+1. Go to `chrome://extensions/` in your browser
+1. Activate "Developer mode" in the top right corner
+1. Click <kbd>Load Unpacked Extension</kbd>
+1. Navigate to the dist folder (`<path>/reels-blocker/dist`), which contains the `manifest.json` file, and click Ok
 
 If it does not work, double check that the path to this folder is correct.
