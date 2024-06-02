@@ -5,7 +5,9 @@ addCSS(selectorArray);
 // Applied in removeNode, used to remove all feed posts where the following strings show up
 const unwantedNodeStrings = [
     'Suggested for you',
-    '· Follow'
+    '· Follow',
+    'Sponsored',
+    'added a new photo.'
 ]
 
 // Removes a node where strings from unwantedNodeStrings are included
@@ -23,6 +25,7 @@ function removeNodeIfUnwanted(node) {
     unwantedNodeStrings.forEach(string => {
         if(innerText.includes(string)) {
             node.parentNode.removeChild(node);
+            console.log('Reels blocker: Removed node with text: ' + string);
             return;
         }
     });
