@@ -1,17 +1,36 @@
-import { Selector } from "../websites/selectors.js";
+import { Option, facebookOptions } from "../websites/options";
+import { changeTestText } from "./test";
 
-const selectorArray: Selector[] = (window as any).facebookSelectors || [];
+let optionArray: Option[];
 
-function toggleSelector(index: number) {
-    selectorArray[index].active = !selectorArray[index].active;
 
-    // Update the CSS or do other necessary actions here...
+// Interaction with the popup
+chrome.storage.sync.onChanged.addListener(changes => {
+    changeTestText('Storage changed: ' + JSON.stringify(changes));
+});
+
+function toggleoption(index: number) {
+    optionArray[index].active = !optionArray[index].active;
+    chrome.storage.sync.set({ facebookOptions: optionArray });
 }
 
-function addSelectorsToDocument(selectors: Selector[]) {
+
+// Initial loading of the popup
+chrome.storage.sync.get('facebookOptions', (data) => {
+    if (data.facebookOptions === undefined) {
+        chrome.storage.sync.set({ facebookOptions: facebookOptions});
+        optionArray = facebookOptions;
+    } else {
+        optionArray = data.facebookOptions as Option[];
+    }
+
+    addOptionsToDocument(optionArray);
+});
+
+function addOptionsToDocument(options: Option[]) {
     const settingsList = document.querySelector('.settings-list');
 
-    selectors.forEach((selector, index) => {
+    options.forEach((option, index) => {
         const settingsItem = document.createElement('div');
         settingsItem.className = 'settings-item';
 
@@ -20,14 +39,14 @@ function addSelectorsToDocument(selectors: Selector[]) {
         
         const input = document.createElement('input');
         input.type = 'checkbox';
-        input.checked = selector.active;
-        input.addEventListener('change', () => toggleSelector(index));
+        input.checked = option.active;
+        input.addEventListener('change', () => toggleoption(index));
         
         const span = document.createElement('span');
         span.classList.add('slider', 'round');
 
         const text = document.createElement('p');
-        text.textContent = selector.description;
+        text.textContent = option.description;
         
         settingsList?.appendChild(settingsItem);
         settingsItem.appendChild(toggle);
@@ -36,5 +55,3 @@ function addSelectorsToDocument(selectors: Selector[]) {
         settingsItem.appendChild(text);
     });
 };
-
-addSelectorsToDocument(selectorArray);

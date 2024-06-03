@@ -1,6 +1,6 @@
-import { addCSS } from "./selectors";
+import { addCSS } from "./options";
 
-const selectorArray = (window as any).youtubeSelectors;
+const optionArray = (window as any).youtubeOptions;
 
 // Number of sections in the home video page that shows up. Allowed to be positive numbers.
 // Only affects the home page because of [page-subtype="home"]. Alternatives are [page-subtype="channel"] and [page-subtype="subscriptions"]
@@ -8,9 +8,9 @@ const selectorArray = (window as any).youtubeSelectors;
 const homePageSections = 3;
 
 if (homePageSections >= 0) {
-    selectorArray.push(
+    optionArray.push(
         `ytd-two-column-browse-results-renderer[page-subtype="home"] #contents:has(ytd-rich-grid-row)>:nth-child(n + ${homePageSections + 1})`
     );
 }
 
-addCSS(selectorArray);
+addCSS(optionArray);

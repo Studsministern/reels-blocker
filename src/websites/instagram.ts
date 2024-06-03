@@ -1,4 +1,4 @@
-import { addCSS } from './selectors';
+import { addCSS } from './options';
 
-const selectorArray = (window as any).instagramSelectors || [];
-addCSS(selectorArray);
+const optionArray = (window as any).instagramOptions || [];
+addCSS(optionArray);

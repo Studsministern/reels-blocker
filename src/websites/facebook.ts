@@ -1,8 +1,14 @@
-import { addCSS } from './selectors';
+import { Option, addCSS, facebookOptions } from './options';
 
-// Applied in CSSselectors.js
-const selectorArray = (window as any).facebookSelectors || [];
-addCSS(selectorArray);
+chrome.storage.sync.get('facebookOptions', (data) => {
+    if (data.facebookOptions === undefined) {
+        chrome.storage.sync.set({ facebookOptions: facebookOptions});
+        addCSS(facebookOptions);
+        return;
+    }
+
+    addCSS(data.facebookOptions as Option[]);
+});
 
 // Applied in removeNode, used to remove all feed posts where the following strings show up
 const unwantedNodeStrings = [

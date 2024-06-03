@@ -1,4 +1,4 @@
-import { addCSS } from "./selectors";
+import { addCSS } from "./options";
 
-const selectorArray = (window as any).tiktokSelectors;
-addCSS(selectorArray);
+const optionArray = (window as any).tiktokOptions || [];
+addCSS(optionArray);
