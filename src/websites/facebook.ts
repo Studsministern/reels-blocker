@@ -15,7 +15,7 @@ const unwantedNodeStrings = [
 // Removes a node where strings from unwantedNodeStrings are included
 function removeNodeIfUnwanted(node: HTMLElement) {
     // Special case for Reels and short videos
-    if(node.innerText.includes('Reels and short videos')) {
+    if (node.innerText.includes('Reels and short videos')) {
         node.parentNode?.removeChild(node);
         return;
     }
@@ -24,12 +24,10 @@ function removeNodeIfUnwanted(node: HTMLElement) {
     const headerElement = node.querySelector('.x1cy8zhl');
     const innerText = headerElement?.textContent ?? '';
 
-    console.log("Testing:", innerText)
-
     unwantedNodeStrings.forEach(string => {
-        if(innerText.includes(string)) {
+        if (innerText.includes(string)) {
             node.parentNode?.removeChild(node);
-            console.log('Reels blocker: Removed node with text: ' + string);
+            console.log('Reels blocker: Removed post with text: ' + string);
             return;
         }
     });
@@ -60,14 +58,14 @@ function waitForElm(selector: string) {
 waitForElm('div:not([class]):has(>[class="x1lliihq"])').then((feedNode: unknown) => {
     // Removes new nodes
     let observer = new MutationObserver(mutations => {
-        for(let mutation of mutations) {
+        for (let mutation of mutations) {
             const addedNodes = Array.from(mutation.addedNodes);
-            for(let node of addedNodes) {
+            for (let node of addedNodes) {
                 removeNodeIfUnwanted(node as HTMLElement);
             }
         }
     });
-        
+
     observer.observe(feedNode as Node, {
         childList: true,
         subtree: false
