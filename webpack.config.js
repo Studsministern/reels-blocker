@@ -8,7 +8,9 @@ const outputPath = 'dist';
 const entryPoints = {};
 
 glob.sync('./src/**/*.ts').forEach(file => {
-    const entry = path.resolve('/', file).replace('.ts', '');
+    const entry = path.resolve('/', file).replace('.ts', ''); // In Linux (makes sense)
+    // const entry = ('./\\' + file).replace('.ts', ''); // In Windows (really stupid, but it works)
+
     entryPoints[entry] = entry;
 });
 
