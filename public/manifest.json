@@ -2,9 +2,9 @@
     "manifest_version": 3,
     "name": "Reels Blocker",
     "description": "Prevent the infinite scrolling of instagram reels, YouTube shorts, Facebook videos/reels and TikTok.",
-    "version": "1.0",
+    "version": "0.2.0",
     "icons": {
-        "128": "icons/128.png"
+        "128": "icons/extension/128.png"
     },
     "content_scripts": [
         {

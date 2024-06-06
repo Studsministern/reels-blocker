@@ -1,5 +1,13 @@
 import $ from 'jquery';
 
+
+/**
+ * Class representing an option that can be toggled on or off.
+ * 
+ * @param description The description of the option
+ * @param active Whether the option is active or not
+ * @param selector The CSS selector for the option
+ */
 export class Option {
     description: string;
     active: boolean;
@@ -12,37 +20,13 @@ export class Option {
     }
 }
 
-// Convert the option array to a string, for use as a CSS selector
-function stringifyOptions(options: Option[]) {
-    let string = '';
 
-    options.forEach(option => {
-        if (option.active) {
-            if (string == '') {
-                string = `${option.selector}`
-            } else {
-                string += `,\n${option.selector}`;
-            }
-        }
-    });
+// A variable where each website name is matched with an arrays of options for that website
+export let websiteOptions: any = {}
 
-    return string;
-}
-
-// Add the CSS styling
-export function addCSS(options: Option[]) {
-    $('html').prepend(
-        `<style>
-        ${stringifyOptions(options)} {
-            display: none!important;
-        }
-        </style>`
-    );
-}
 
 // TODO: Group options based on similar properties. For example disabling all reels or shorts at once.
-// TODO: Switch from window.<something> to browser.storage.local
-export const facebookOptions = [
+websiteOptions['facebook'] = [
     new Option('Reels tab', true, 'div:has(>[class="x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x2lah0s x193iq5w xeuugli x10b6aqq x1yrsyyn x1iyjqo2"])>:nth-child(2)'),
     new Option('Reels tray', true, 'div[aria-label="Reels tray"]'),
     new Option('Reels buttons', true, '[role="button"]:has(div[aria-label*="Card"])'),
@@ -55,11 +39,8 @@ export const facebookOptions = [
     new Option('Sponsored posts hover special case', true, 'div[class="x1lliihq"]:has(a[href*="/ads/"])'),
     new Option('Sponsored posts tab' , true, 'div[class="x1y1aw1k"] span:has(a[aria-label="Advertiser"])')
 ];
-/** Possible selector:
- * div[class*="x6s0dn4 x78zum5 x1q0g3np x5yr21d xl56j7k xh8yej3"] to remove everything when viewing a reel
-*/
 
-(window as any).instagramOptions = [
+websiteOptions['instagram'] = [
     new Option('Home screen "Suggested posts" text', true, 'main div:not([class])>div:has(article)>article~div>:last-child'),
     new Option('Home screen suggested posts', true, 'main div:not([class])>div:has(article)>div~article'),
     new Option('Infinite loading', true, 'main div._aalg'),
@@ -72,12 +53,7 @@ export const facebookOptions = [
     new Option('Explore page posts/reels' , true, 'main div[style*="position: relative; display: flex; flex-direction: column;"]:has(div[class="x9f619 xjbqb8w x1lliihq x168nmei x13lgxp2 x5pf9jr xo71vjh x1n2onr6 x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"])'),
 ];
 
-(window as any).tiktokOptions = [
-    new Option('Only showing one post on recommended page', true, '[data-e2e="recommend-list-item-container"]~[data-e2e="recommend-list-item-container"]'),
-    new Option('Remove loading symbol on recommended page', true, 'svg[class*="tiktok-qmnyxf-SvgContainer"]')
-];
-
-(window as any).youtubeOptions = [
+websiteOptions['youtube'] = [
     new Option('Shorts side menu (mini mode)', true, 'ytd-mini-guide-entry-renderer[aria-label="Shorts"]'),
     new Option('Shorts side menu (large mode)', true, 'ytd-guide-entry-renderer:has([title="Shorts"])'),
     new Option('Shorts on recommended page', true, 'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts])'),
@@ -88,3 +64,38 @@ export const facebookOptions = [
     new Option('Shorts section in search results (based on the "shorts" logo over thumbnail)', true, 'ytd-video-renderer:has([overlay-style="SHORTS"])'),
     new Option('Prevent scrolling in a short video', true, 'ytd-reel-video-renderer[id]:not([id="0"])')
 ];
+
+websiteOptions['tiktok'] = [
+    new Option('Only showing one post on recommended page', true, '[data-e2e="recommend-list-item-container"]~[data-e2e="recommend-list-item-container"]'),
+    new Option('Remove loading symbol on recommended page', true, 'svg[class*="tiktok-qmnyxf-SvgContainer"]')
+];
+
+
+// Convert the option array to a string, for use as a CSS selector
+/**
+ * Converts an array of options to a string, where each option is a CSS selector.
+ * 
+ * @param optionArray The array of options to convert
+ * @returns A string of CSS selectors
+ */
+function stringifyOptions(optionArray: Option[]): string {
+    return optionArray
+        .filter(option => option.active)
+        .map(option => option.selector)
+        .join(',\n');
+}
+
+/**
+ * Adds the CSS to the page to hide the elements specified by the options. Uses JQuery to prepend a style element to the HTML.
+ * 
+ * @param options The array of options to hide
+ */
+export function addCSS(options: Option[]) {
+    $('html').prepend(
+        `<style>
+        ${stringifyOptions(options)} {
+            display: none!important;
+        }
+        </style>`
+    );
+}

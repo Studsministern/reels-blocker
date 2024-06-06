@@ -1,16 +1,28 @@
-import { addCSS } from "./options";
+import { Option, addCSS } from './options';
+import { getStoredOptions } from '../utils/utils';
 
-const optionArray = (window as any).youtubeOptions;
+// TODO: Should be editable in the popup
+const DEFAULT_HOME_PAGE_SECTIONS = 3;
 
-// Number of sections in the home video page that shows up. Allowed to be positive numbers.
-// Only affects the home page because of [page-subtype="home"]. Alternatives are [page-subtype="channel"] and [page-subtype="subscriptions"]
-// TODO: Should be set as an option
-const homePageSections = 3;
+let options: Option[] = [];
 
-if (homePageSections >= 0) {
-    optionArray.push(
-        `ytd-two-column-browse-results-renderer[page-subtype="home"] #contents:has(ytd-rich-grid-row)>:nth-child(n + ${homePageSections + 1})`
-    );
+/**
+ * Sets the number of sections of the home page that should be visible.
+ * 
+ * @param sections The number of sections of the home page that should be visible
+ */
+function setHomePageSections(sections: number): void {
+    if (sections >= 0) {
+        // Only affects the home page because of [page-subtype="home"]. Alternatives are [page-subtype="channel"] and [page-subtype="subscriptions"]
+        options.push(
+            new Option('Limit home page sections', true, `ytd-two-column-browse-results-renderer[page-subtype="home"] #contents:has(ytd-rich-grid-row)>:nth-child(n + ${sections + 1})`)
+        );
+    }
 }
 
-addCSS(optionArray);
+getStoredOptions('youtube').then((options) => {
+    setHomePageSections(DEFAULT_HOME_PAGE_SECTIONS);
+    addCSS(options);
+}).catch(error => {
+    console.error(error);
+});

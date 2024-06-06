@@ -1,57 +1,79 @@
-import { Option, facebookOptions } from "../websites/options";
-import { changeTestText } from "./test";
+import { Option } from "../websites/options";
+import { WebsiteButton, SettingsItem, setInformationText } from "./components";
+import { getStoredOptions, setStoredOptions } from "../utils/utils";
+
 
 let optionArray: Option[];
 
 
-// Interaction with the popup
-chrome.storage.sync.onChanged.addListener(changes => {
-    changeTestText('Storage changed: ' + JSON.stringify(changes));
+/*** Creating button listeners for each website ***/
+const websites = ['facebook', 'instagram', 'youtube', 'tiktok'];
+
+const websiteButtons = websites.map(website => { return new WebsiteButton(website)});
+
+const websiteButtonContainer = document.querySelector('.website-button-container');
+websiteButtons.forEach(button => {
+    const buttonElement = button.generateButton();
+
+    buttonElement.addEventListener('click', () => {
+        updateSettingsList(button.getWebsiteName());
+    });
+
+    websiteButtonContainer?.appendChild(buttonElement);
 });
 
-function toggleoption(index: number) {
-    optionArray[index].active = !optionArray[index].active;
-    chrome.storage.sync.set({ facebookOptions: optionArray });
-}
 
-
-// Initial loading of the popup
-chrome.storage.sync.get('facebookOptions', (data) => {
-    if (data.facebookOptions === undefined) {
-        chrome.storage.sync.set({ facebookOptions: facebookOptions});
-        optionArray = facebookOptions;
-    } else {
-        optionArray = data.facebookOptions as Option[];
-    }
-
-    addOptionsToDocument(optionArray);
-});
-
-function addOptionsToDocument(options: Option[]) {
+/**
+ * Replaces the settings list with new options.
+ * 
+ * @param website The name of the website corresponding to the new settings
+ * @param newOptions The new options to replace the old ones
+ */
+function replaceSettingsList(website: string, newOptions: Option[]): void {
     const settingsList = document.querySelector('.settings-list');
 
-    options.forEach((option, index) => {
-        const settingsItem = document.createElement('div');
-        settingsItem.className = 'settings-item';
+    const items = newOptions.map((option, index) => {
+        const item = new SettingsItem(option, website, index);
 
-        const toggle = document.createElement('label');
-        toggle.className = 'toggle';
-        
-        const input = document.createElement('input');
-        input.type = 'checkbox';
-        input.checked = option.active;
-        input.addEventListener('change', () => toggleoption(index));
-        
-        const span = document.createElement('span');
-        span.classList.add('slider', 'round');
-
-        const text = document.createElement('p');
-        text.textContent = option.description;
-        
-        settingsList?.appendChild(settingsItem);
-        settingsItem.appendChild(toggle);
-        toggle.appendChild(input);
-        toggle.appendChild(span);
-        settingsItem.appendChild(text);
+        return item.generateItem();
     });
+
+    settingsList?.replaceChildren(...items);
 };
+
+
+/**
+ * Toggles the stored value of the settings item.
+ * 
+ * @param item The settings item to toggle
+ */
+export function toggleStoredOptions(item: SettingsItem): void {
+    const index = item.getIndex();
+    const website = item.getWebsite();
+
+    // Update the stored value
+    optionArray[index].active = !optionArray[index].active;
+    setStoredOptions(website, optionArray);
+}
+
+/**
+ * Updates the settings list with the options for the given website.
+ * 
+ * @param website The name of the website to get the settings for
+ */
+function updateSettingsList(website: string): void {
+    getStoredOptions(website).then((options) => {
+        optionArray = options;
+        replaceSettingsList(website, optionArray);
+    }).catch(error => {
+        setInformationText('Error: ' + error);
+    });
+}
+
+// Listen for changes in the settings
+chrome.storage.sync.onChanged.addListener(_ => {
+    setInformationText('Settings changed, update the website to see the changes.');
+});
+
+// Setting start values
+updateSettingsList(websites[0]);

@@ -1,4 +1,8 @@
-import { addCSS } from "./options";
+import { addCSS } from './options';
+import { getStoredOptions } from '../utils/utils';
 
-const optionArray = (window as any).tiktokOptions || [];
-addCSS(optionArray);
+getStoredOptions('tiktok').then(options => {
+    addCSS(options);
+}).catch(error => {
+    console.error(error);
+});
