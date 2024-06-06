@@ -9,8 +9,8 @@ An installation guide can be found [at the bottom of this page](#installing).
 ## How it works
 
 - The `manifest.json` file configures which JavaScript files should run when visiting Facebook, Instagram, TikTok and YouTube.
-- In these files, arrays of CSS selectors (called `selectorArray`) are created specifically for that website. The CSS selectors identify elements which should be hidden or removed.
-- In `CSSselectors.js`, the selector array is made into a string. A style element is prepended to the HTML element of these websites, which hides the elements from the website:
+- In these files, arrays of options (called `optionArray`) are created specifically for that website, where each `Option` contains a CSS selector. The CSS selectors identify elements which should be hidden or removed.
+- In `options.ts`, the option array is made into a string by combining the active selectors from each option. A style element is prepended to the HTML element of these websites, which hides the elements from the website:
 
 ```
 $('html').prepend(
@@ -22,7 +22,7 @@ $('html').prepend(
 );
 ```
 
-For Facebook, a `MutationObserver` is also added to remove "Suggested for you" and "Reels and short videos" from the feed as soon as these posts load in. Currently this works most of the time, and either works very well or not at all.
+For Facebook, a `MutationObserver` is also added to remove some posts from the feed as soon as these posts load in. The posts removed in this way are those that cannot be detected by CSS selectors alone. Currently this works most of the time, and usually either works very well or not at all.
 
 &nbsp;
 
@@ -33,6 +33,7 @@ For Facebook, a `MutationObserver` is also added to remove "Suggested for you" a
 - All Facebook Reels.
 - All Facebook Videos.
 - All "Suggested for you" and "Reels and short videos" posts in the home feed.
+- All posts from pages that are not followed.
 - All sponsored posts.
 
 ### Instagram:

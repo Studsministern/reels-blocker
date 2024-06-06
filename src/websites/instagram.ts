@@ -1,4 +1,8 @@
-import { addCSS } from './selectors';
+import { addCSS } from './options';
+import { getStoredOptions } from '../utils/utils';
 
-const selectorArray = (window as any).instagramSelectors || [];
-addCSS(selectorArray);
+getStoredOptions('instagram').then(options => {
+    addCSS(options);
+}).catch(error => {
+    console.error(error);
+});

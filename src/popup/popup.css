@@ -8,7 +8,9 @@
     --gap-width: .5rem;
 }
 
-/* Document structure */
+
+
+/** Document structure **/
 * {
     padding: 0;
     margin: 0;
@@ -27,6 +29,35 @@ body {
     width: 20rem;
 }
 
+
+/** Settings **/
+.website-button-container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-width);
+}
+
+.website-button-container button {
+    padding: calc(.5 * var(--gap-width));
+    border: none;
+    border-radius: .5rem;
+    background: none;
+    cursor: pointer;
+}
+
+.website-button-container button:hover {
+    background-color: #f0f0f0;
+}
+
+.website-button-container button:active {
+    background-color: #e0e0e0;
+}
+
+.website-button-container img {
+    width: 2rem;
+    height: 2rem;
+}
+
 .settings-list {
     flex: 1;
     display: flex;
@@ -43,7 +74,10 @@ body {
     gap: var(--gap-width);
 }
 
-/* The toggle - the box around the slider */
+
+
+/** Toggle switch **/
+/* The box around the slider */
 .toggle {
     flex-shrink: 0;
     position: relative;
@@ -105,4 +139,11 @@ input:checked + .slider:before {
   
 .slider.round:before {
     border-radius: 50%;
+}
+
+
+/** Information text **/
+.information {
+    padding: 0 var(--gap-width);
+    color: #910000;
 }
