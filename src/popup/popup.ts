@@ -29,7 +29,7 @@ websiteButtons.forEach(button => {
  * @param website The name of the website corresponding to the new settings
  * @param newOptions The new options to replace the old ones
  */
-function replaceSettingsList(website: string, newOptions: Option[]): void {
+const replaceSettingsList = (website: string, newOptions: Option[]): void => {
     const settingsList = document.querySelector('.settings-list');
 
     const items = newOptions.map((option, index) => {
@@ -47,7 +47,7 @@ function replaceSettingsList(website: string, newOptions: Option[]): void {
  * 
  * @param item The settings item to toggle
  */
-export function toggleStoredOptions(item: SettingsItem): void {
+export const toggleStoredOptions = (item: SettingsItem): void => {
     const index = item.getIndex();
     const website = item.getWebsite();
 
@@ -61,7 +61,7 @@ export function toggleStoredOptions(item: SettingsItem): void {
  * 
  * @param website The name of the website to get the settings for
  */
-function updateSettingsList(website: string): void {
+const updateSettingsList = (website: string): void => {
     getStoredOptions(website).then((options) => {
         optionArray = options;
         replaceSettingsList(website, optionArray);

@@ -11,7 +11,7 @@ let options: Option[] = [];
  * 
  * @param sections The number of sections of the home page that should be visible
  */
-function setHomePageSections(sections: number): void {
+const setHomePageSections = (sections: number): void => {
     if (sections >= 0) {
         // Only affects the home page because of [page-subtype="home"]. Alternatives are [page-subtype="channel"] and [page-subtype="subscriptions"]
         options.push(

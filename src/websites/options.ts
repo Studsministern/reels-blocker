@@ -22,7 +22,7 @@ export class Option {
 
 
 // A variable where each website name is matched with an arrays of options for that website
-export let websiteOptions: any = {}
+export let websiteOptions: Record<string, Option[]> = {}
 
 
 // TODO: Group options based on similar properties. For example disabling all reels or shorts at once.
@@ -78,7 +78,7 @@ websiteOptions['tiktok'] = [
  * @param optionArray The array of options to convert
  * @returns A string of CSS selectors
  */
-function stringifyOptions(optionArray: Option[]): string {
+const stringifyOptions = (optionArray: Option[]): string => {
     return optionArray
         .filter(option => option.active)
         .map(option => option.selector)
@@ -90,7 +90,7 @@ function stringifyOptions(optionArray: Option[]): string {
  * 
  * @param options The array of options to hide
  */
-export function addCSS(options: Option[]) {
+export const addCSS = (options: Option[]) => {
     $('html').prepend(
         `<style>
         ${stringifyOptions(options)} {

@@ -7,7 +7,7 @@ import { Option, websiteOptions } from '../websites/options';
  * @param website The name of the website
  * @returns The key to get the stored options
  */
-export function generateWebsiteKey(website: string): string {
+export const generateWebsiteKey = (website: string): string => {
     return `${website}Options`;
 }
 
@@ -17,7 +17,7 @@ export function generateWebsiteKey(website: string): string {
  * @param website The name of the website
  * @returns A promise of the stored options
  */
-export async function getStoredOptions(website: string): Promise<Option[]> {
+export const getStoredOptions = async (website: string): Promise<Option[]> => {
     return new Promise((resolve, reject) => {
         const key = generateWebsiteKey(website);
         const options = websiteOptions[website];
@@ -46,7 +46,7 @@ export async function getStoredOptions(website: string): Promise<Option[]> {
  * @param website The name of the website
  * @param newOptions The new options to store
  */
-export function setStoredOptions(website: string, newOptions: Option[]): void {
+export const setStoredOptions = (website: string, newOptions: Option[]): void => {
     const key = generateWebsiteKey(website);
     chrome.storage.sync.set({ [key]: newOptions });
 }
