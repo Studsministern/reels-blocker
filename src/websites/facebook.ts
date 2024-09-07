@@ -16,7 +16,7 @@ const unwantedNodeStrings = [
  * 
  * @param node The node to remove, if unwanted
  */
-function removeNodeIfUnwanted(node: HTMLElement): void {
+const removeNodeIfUnwanted = (node: HTMLElement): void => {
     // Special case for Reels and short videos
     if (node.innerText.includes('Reels and short videos')) {
         node.parentNode?.removeChild(node);
@@ -44,15 +44,16 @@ function removeNodeIfUnwanted(node: HTMLElement): void {
  * @param selector The CSS selector to wait for
  * @returns A promise that resolves when the element is found
  */
-function waitForElm(selector: string): Promise<unknown> {
+const waitForElm = (selector: string): Promise<unknown> => {
     return new Promise(resolve => {
-        if (document.querySelector(selector)) {
-            return resolve(document.querySelector(selector));
+        const element = document.querySelector(selector)
+        if (element) {
+            return resolve(element);
         }
 
         const observer = new MutationObserver(_ => {
-            if (document.querySelector(selector)) {
-                resolve(document.querySelector(selector));
+            if (element) {
+                resolve(element);
                 observer.disconnect();
             }
         });
@@ -69,7 +70,7 @@ function waitForElm(selector: string): Promise<unknown> {
  * 
  * @param feedNode The node containing the feed posts
  */
-function mutateFeedNode(feedNode: HTMLElement): void {
+const mutateFeedNode = (feedNode: HTMLElement): void => {
     // Removes new nodes
     let observer = new MutationObserver(mutations => {
         for (let mutation of mutations) {

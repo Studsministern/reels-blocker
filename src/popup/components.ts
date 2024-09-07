@@ -8,7 +8,7 @@ const informationParagraph = document.querySelector('.information');
  * 
  * @param text The text to change to
  */
-export function setInformationText(text: string): void {
+export const setInformationText = (text: string): void => {
     if (informationParagraph === null) {
         return;
     }
@@ -31,14 +31,14 @@ export class WebsiteButton {
     /**
      * @returns The name of the website
      */
-    getWebsiteName(): string {
+    getWebsiteName = (): string => {
         return this.websiteName;
     }
 
     /**
      * @returns The HTML for the button
      */
-    generateButton(): HTMLButtonElement {
+    generateButton = (): HTMLButtonElement => {
         const button = document.createElement('button');
         button.classList.add(`${this.websiteName}-button`);
         
@@ -73,21 +73,21 @@ export class SettingsItem {
     /**
      * @returns The website name
      */
-    getWebsite(): string {
+    getWebsite = (): string => {
         return this.website;
     }
 
     /**
      * @returns The index of the option in the array
      */
-    getIndex(): number {
+    getIndex = (): number => {
         return this.index;
     }
 
     /**
      * @returns The HTML for the item, with an event listener for toggling the item
      */
-    generateItem(): HTMLDivElement {
+    generateItem = (): HTMLDivElement => {
         const settingsItem = document.createElement('div');
         settingsItem.className = 'settings-item';
 

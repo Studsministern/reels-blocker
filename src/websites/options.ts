@@ -22,7 +22,7 @@ export class Option {
 
 
 // A variable where each website name is matched with an arrays of options for that website
-export let websiteOptions: any = {}
+export let websiteOptions: Record<string, Option[]> = {}
 
 
 // TODO: Group options based on similar properties. For example disabling all reels or shorts at once.
@@ -35,7 +35,7 @@ websiteOptions['facebook'] = [
     new Option('Facebook watch recommendations below video', true, 'div:not([class])>div[class="x78zum5"]'),
     new Option('"Gaming Video" menu tab', true, 'ul:not([class]) li:has(a[href*="video" i])'),
     new Option('"Live videos" and "Watch" menu tab', true, 'ul:not([class]) li:has(a[href*="watch" i])'),
-    new Option('Sponsored posts', true, 'div[class="x1lliihq"]:has(span:not([class]):not([style])>span>a[href^="?__cft__[0]"])'), 
+    new Option('Sponsored posts', true, 'div[class="x1lliihq"]:has(span:not([class]):not([style])>a[href^="?__cft__[0]"])'), 
     new Option('Sponsored posts hover special case', true, 'div[class="x1lliihq"]:has(a[href*="/ads/"])'),
     new Option('Sponsored posts tab' , true, 'div[class="x1y1aw1k"] span:has(a[aria-label="Advertiser"])')
 ];
@@ -78,7 +78,7 @@ websiteOptions['tiktok'] = [
  * @param optionArray The array of options to convert
  * @returns A string of CSS selectors
  */
-function stringifyOptions(optionArray: Option[]): string {
+const stringifyOptions = (optionArray: Option[]): string => {
     return optionArray
         .filter(option => option.active)
         .map(option => option.selector)
@@ -90,7 +90,7 @@ function stringifyOptions(optionArray: Option[]): string {
  * 
  * @param options The array of options to hide
  */
-export function addCSS(options: Option[]) {
+export const addCSS = (options: Option[]) => {
     $('html').prepend(
         `<style>
         ${stringifyOptions(options)} {
