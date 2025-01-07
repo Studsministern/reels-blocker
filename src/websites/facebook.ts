@@ -6,6 +6,7 @@ import { getStoredOptions } from '../utils/utils';
 const unwantedNodeStrings = [
     'Suggested for you',
     '· Follow',
+    '· Join',
     'Sponsored',
     'added a new photo.'
 ]
