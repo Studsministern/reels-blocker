@@ -1,8 +1,10 @@
 import { addCSS } from './options';
 import { getStoredOptions } from '../utils/utils';
 
-getStoredOptions('tiktok').then(options => {
+getStoredOptions('tiktok')
+  .then((options) => {
     addCSS(options);
-}).catch(error => {
+  })
+  .catch((error) => {
     console.error(error);
-});
+  });
