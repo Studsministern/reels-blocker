@@ -16,13 +16,6 @@ const unwantedNodeStrings = [
  * @param node The node to remove, if unwanted
  */
 const removeNodeIfUnwanted = (node: HTMLElement): void => {
-  // Special case for Reels and short videos
-  if (node.innerText.includes('Reels and short videos')) {
-    node.parentNode?.removeChild(node);
-    return;
-  }
-
-  // Handling all other strings
   const headerElement = node.querySelector('.x1cy8zhl');
   const innerText = headerElement?.textContent ?? '';
 

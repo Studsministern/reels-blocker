@@ -25,15 +25,24 @@ export let websiteOptions: Record<string, Option[]> = {};
 // TODO: Group options based on similar properties. For example disabling all reels or shorts at once.
 websiteOptions['facebook'] = [
   new Option(
-    'Reels tab',
+    'Reels menu tab',
     true,
     'div:has(>[class="x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x2lah0s x193iq5w xeuugli x10b6aqq x1yrsyyn x1iyjqo2"])>:nth-child(2)'
   ),
-  new Option('Reels tray', true, 'div[aria-label="Reels tray"]'),
   new Option(
-    'Reels buttons',
+    'Reels tray at start of feed',
+    true,
+    'div[aria-label="Reels tray"]'
+  ),
+  new Option(
+    'Reels buttons when viewing reel',
     true,
     '[role="button"]:has(div[aria-label*="Card"])'
+  ),
+  new Option(
+    'Reels post in feed',
+    true,
+    'div[class="x1lliihq"]:has(div[aria-label="Reels"])'
   ),
   new Option(
     'Facebook watch menu tab',
@@ -41,7 +50,7 @@ websiteOptions['facebook'] = [
     'ul[class="xuk3077 x78zum5 x1iyjqo2 xl56j7k x1p8ty84 x1na7pl x88anuq"]>:nth-child(2)'
   ),
   new Option(
-    'Facebook watch videos',
+    'Facebook watch videos on /video page',
     true,
     'div:has(>[aria-label="Video"]):has(div#watch_feed)'
   ),
@@ -71,7 +80,7 @@ websiteOptions['facebook'] = [
     'div[class="x1lliihq"]:has(a[href*="/ads/"])'
   ),
   new Option(
-    'Sponsored posts tab',
+    'Advertisement on side',
     true,
     'div[class="x1y1aw1k"] span:has(a[aria-label="Advertiser"])'
   ),
@@ -88,7 +97,11 @@ websiteOptions['instagram'] = [
     true,
     'main div:not([class])>div:has(article)>div~article'
   ),
-  new Option('Infinite loading', true, 'main div._aalg'),
+  new Option(
+    'Infinite loading of non-followed accounts',
+    true,
+    'main div._aalg'
+  ),
   new Option(
     '"For you" feed button',
     true,
