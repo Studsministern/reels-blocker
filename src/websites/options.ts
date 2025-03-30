@@ -72,7 +72,7 @@ websiteOptions['facebook'] = [
   new Option(
     'Sponsored posts',
     true,
-    'div[class="x1lliihq"]:has(span:not([class]):not([style])>a[href^="?__cft__[0]"])'
+    'div[class="x1lliihq"]:has(div[data-ad-rendering-role="cta-"])'
   ),
   new Option(
     'Sponsored posts hover special case',
@@ -82,7 +82,7 @@ websiteOptions['facebook'] = [
   new Option(
     'Advertisement on side',
     true,
-    'div[class="x1y1aw1k"] span:has(a[aria-label="Advertiser"])'
+    'div[class="x1n2onr6"]:has(a[aria-label="Advertiser"])'
   ),
 ];
 

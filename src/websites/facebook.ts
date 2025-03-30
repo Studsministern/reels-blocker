@@ -19,10 +19,12 @@ const removeNodeIfUnwanted = (node: HTMLElement): void => {
   const headerElement = node.querySelector('.x1cy8zhl');
   const innerText = headerElement?.textContent ?? '';
 
-  unwantedNodeStrings.forEach((string) => {
-    if (innerText.includes(string)) {
+  unwantedNodeStrings.forEach((unwantedNodeString) => {
+    if (innerText.includes(unwantedNodeString)) {
       node.parentNode?.removeChild(node);
-      console.log('Reels blocker: Removed post with text: ' + string);
+      console.log(
+        `Reels blocker: Removed post with text:\n\t${innerText}\n\tBecause it contained text:${unwantedNodeString}`
+      );
       return;
     }
   });

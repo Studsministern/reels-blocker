@@ -1,6 +1,6 @@
 {
   "name": "reels-blocker",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "This browser extension is created with the goal of removing reels/short videos and infinite scrolling from several websites without affecting the actual content from friends and liked pages. Its purpose is to save time, improve mental health and boost productivity. The websites affected by this browser extension are Facebook, Instagram, TikTok and YouTube.",
   "license": "AGPL-version-3.0",
   "private": false,
