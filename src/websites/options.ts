@@ -72,7 +72,7 @@ websiteOptions['facebook'] = [
   new Option(
     'Sponsored posts',
     true,
-    'div[class="x1lliihq"]:has(div[data-ad-rendering-role="cta-"])'
+    'div[class="x1lliihq"]:has(div[data-ad-rendering-role^="cta-"])'
   ),
   new Option(
     'Sponsored posts hover special case',
